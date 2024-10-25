@@ -14,9 +14,11 @@ class StudentManagementSystem:
         Bug: Function doesn't properly check for duplicate roll numbers
         It compares strings instead of integers for roll numbers
         """
-        # Bug: Incorrect string comparison instead of integer comparison
-        if any(str(student.roll_no) == str(roll_no) for student in self.students):
-            return False, "Roll number already exists"
+        roll_no = int(roll_no)
+
+        for student in self.students:
+            if student.roll_no == roll_no:
+                return False, "Roll number already exists"
         
         new_student = Student(roll_no, name, age, grade)
         self.students.append(new_student)
