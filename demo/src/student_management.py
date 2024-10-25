@@ -27,6 +27,7 @@ class StudentManagementSystem:
         return True, "Student added successfully"
     
     def get_student(self, roll_no):
+        roll_no = int(roll_no)#typecasting to integer
         for student in self.students:
             if student.roll_no == roll_no:
                 return student
