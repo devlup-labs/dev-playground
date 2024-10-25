@@ -23,8 +23,8 @@ class PasswordChecker:
         else:
             feedback.append("Password should contain at least one uppercase letter")
         
-        # Bug: Incorrect number checking
-        if password[0].isdigit():  # Bug is here - only checks first character
+        # Corrected number checking
+        if any(c.isdigit() for c in password):  # Fixed here
             score += 1
         else:
             feedback.append("Password should contain at least one number")
