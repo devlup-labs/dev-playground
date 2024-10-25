@@ -31,6 +31,7 @@ class TodoList:
         task.status = new_status
         # Bug: is_completed flag is not updated
         # This creates inconsistency in task completion status
+        task.is_completed = new_status == "completed"  # is_completed is synced with status
         return True, "Status updated successfully"
     
     def get_task(self, task_id):
