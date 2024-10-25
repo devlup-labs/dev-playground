@@ -25,12 +25,17 @@ class TodoList:
         if not task:
             return False, "Task not found"
         
-        if new_status not in ["pending", "in_progress", "completed"]:
+        elif new_status not in ["pending", "in_progress", "completed"]:
             return False, "Invalid status"
         
         task.status = new_status
+
+        if new_status == "completed":
+            task.is_completed = True
+            return True
         # Bug: is_completed flag is not updated
         # This creates inconsistency in task completion status
+        
         return True, "Status updated successfully"
     
     def get_task(self, task_id):
